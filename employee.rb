@@ -94,26 +94,48 @@ class HourlyEmployee < Employee
     puts "Pay this period: $#{formated_pay}"
   end
 
+# Class methods: works like static methods in Java,
+# it does not require an instance to access it (obj=class.new)
+  def self.security_guard(name)
+    HourlyEmployee.new(name, 19.25, 30)
+  end
+
+  def self.cashier(name)
+    HourlyEmployee.new(name, 12.75, 25)
+  end
+
+  def self.janitor(name)
+    HourlyEmployee.new(name, 10.50, 20)
+  end
+
 end
 
-amy = SalariedEmployee.new
-amy.name = "Amy Blake"
-amy.salary = 50000.0
-amy.print_pay_stub
+angela = HourlyEmployee.security_guard("Angela Matthews")
+edwin = HourlyEmployee.cashier("Edwin Burges")
+ivan = HourlyEmployee.janitor("Ivan Stokes")
 
-anna = HourlyEmployee.new
-anna.name = "Anna Broke"
-anna.hourly_wage = 35.0
-anna.hours_per_week = 30
-anna.print_pay_stub 
+angela.print_pay_stub
+edwin.print_pay_stub
+ivan.print_pay_stub
 
-kara = SalariedEmployee.new("Kara", 100000.0)
+#amy = SalariedEmployee.new
+#amy.name = "Amy Blake"
+#amy.salary = 50000.0
+#amy.print_pay_stub
+
+#anna = HourlyEmployee.new
+#anna.name = "Anna Broke"
+#anna.hourly_wage = 35.0
+#anna.hours_per_week = 30
+#anna.print_pay_stub 
+
+#kara = SalariedEmployee.new("Kara", 100000.0)
 #kara.name = ""
-kara.print_pay_stub
+#kara.print_pay_stub
 
-ben = HourlyEmployee.new("Ben", 40.0)
-ben.hours_per_week = 20
-ben.print_pay_stub
+#ben = HourlyEmployee.new("Ben", 40.0)
+#ben.hours_per_week = 20
+#ben.print_pay_stub
 
-doe = HourlyEmployee.new
-doe.print_pay_stub
+#doe = HourlyEmployee.new
+#doe.print_pay_stub
