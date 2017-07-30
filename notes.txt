@@ -1,0 +1,47 @@
+Ruby
+
+# Install
+
+$ sudo apt-get install ruby
+$ sudo apt-get install irb rdoc
+
+# What is Ruby?
+
+Ruby is a dynamic, object-oriented, interpreted scripting programming language. Created by Yukihiro Matsumoto (Matz) in 1995.
+
+# Notes
+
+• In Ruby everything is an object
+• some method like "puts" and "print", don't need a receiver (obj) to be called. It's being include in Ruby's top-level execution environment. Also the custom methods(programmer methods) will be included in top-level ... (in top-level execution environment you dont need . specifying a receiver)
+• parentheses are optional in methos calls
+• interpolatio " #{...} " will be taken literally when used with single-quote ' #{...} '. It also allows operation within it : "...#{10 - num}..."
+• semicolons can be used to end and separe statements, but Ruby treats separated lines as separated statements, making semicolon unnecessarily
+• [obj].inspect or p [param] are used to print string aspects for debuging
+• [obj].methods shows the methods available for that object 
+• [obj].class tells the type of the object
+• 'unless' conditional is the opposite of 'if'. It will run only if condition is false or unless it is true 
+• 'until' loop is the opposite of 'while'. It runs while condition is false or until it is true
+• \n \t \" \' \\ ... are called "escape sequence
+• naming methods ending with ?, ! or =
+∘ ?  : by convention, used to indicate a boolean return
+∘ !  : by convention, used to name methods that perform some permanent or potentially dangerous change
+∘ = : by definition, used to define method as attribute writers
+• method: define default value to a parameter applying a value in the declaration as : def my_method (type, size = "medium", qtd = 1) ... *this way those params become optional (they most be ending arguments)
+• method: return keyword can be implicit (can be omitted) : def calc(x, y) x*y end *will return the product of x*y, even though it is not return x*y
+• classes in Ruby must beging with capital following CamelCase standard, while variables follow snake_case.
+• local variables = within a scope | instance variables = obj attributes, lives as long as the obj does
+• instance variables must contain 'at' in front of the name : @my_instance_var
+• for encapsulation purpose, Ruby doesnt allow direct access to instance variables. For access, use 'accessor methods' (attribute writer and attribute reader (similar to set/get)). 
+• Declare a att. write by def my_att=(value) ...
+• Simplifying accessor methods: just create them by:
+∘ attr_writer :my_var #same as def my_var=(value) @my_var = value end
+∘ attr_reader :my_var #same as def my_var @my_var end
+∘ attr_accessor :my_var #defines both att. writer and att. reader *add more vars by "," #attr_accessor :name, :age
+• Inheritance: class MySubclass < MySuperclass ... end 
+∘ instance variables belong to the obj, not the class. When a class inherit from a superclass, only the instance methods are inherited. If you try " puts obj.instance_variables ", nothing will show up. The obj won't get any instance varaibles until we call some instance methods on it, at which point the method will create the varaibles on the obj.
+
+# irb
+  loading file:
+> irb -I
+>require "./my_file"
+
