@@ -21,3 +21,20 @@ end
 give do |present1, present2|
   puts present1, present2
 end
+
+#trying YIELD
+def say(&block)
+  yield
+end
+
+say do
+  puts "saying sth out loud"
+end
+
+def say_par(&block)
+  yield 'hi', 'there'
+end
+
+say_par do |word1, word2| 
+  puts "#{word1} #{word2}"
+end
