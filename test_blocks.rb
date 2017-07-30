@@ -38,3 +38,13 @@ end
 say_par do |word1, word2| 
   puts "#{word1} #{word2}"
 end
+
+#we also can use 'curly braces' to write blocks
+def say_braces
+  yield 'sup!'
+end
+
+#one line block using curly braces is marely a convention
+#it would work idented like do..end is
+#blocks that covers more than one line should be written with do..end (as a convention)
+say_braces { |word1| puts "#{word1}" }

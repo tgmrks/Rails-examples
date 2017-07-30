@@ -1,9 +1,24 @@
 Ruby
 
+Install Ruby and IRB (interpreter):
+$ sudo yum install ruby -t '2.4.1'
+$ sudo yum install irb rdoc
+
+Install Rails (web framework):
+$ sudo gem install rails --include-dependencies 
+
+enter the interpreter
+$ irb 
+
 # Install
 
 $ sudo apt-get install ruby
 $ sudo apt-get install irb rdoc
+
+# irb
+  loading file:
+> irb -I
+>require "./my_file"
 
 # What is Ruby?
 
@@ -23,9 +38,9 @@ Ruby is a dynamic, object-oriented, interpreted scripting programming language. 
 • 'until' loop is the opposite of 'while'. It runs while condition is false or until it is true
 • \n \t \" \' \\ ... are called "escape sequence
 • naming methods ending with ?, ! or =
-∘ ?  : by convention, used to indicate a boolean return
-∘ !  : by convention, used to name methods that perform some permanent or potentially dangerous change
-∘ = : by definition, used to define method as attribute writers
+	∘ ?  : by convention, used to indicate a boolean return
+	∘ !  : by convention, used to name methods that perform some permanent or potentially dangerous change
+	∘ = : by definition, used to define method as attribute writers
 • method: define default value to a parameter applying a value in the declaration as : def my_method (type, size = "medium", qtd = 1) ... *this way those params become optional (they most be ending arguments)
 • method: return keyword can be implicit (can be omitted) : def calc(x, y) x*y end *will return the product of x*y, even though it is not return x*y
 • classes in Ruby must beging with capital following CamelCase standard, while variables follow snake_case.
@@ -34,14 +49,24 @@ Ruby is a dynamic, object-oriented, interpreted scripting programming language. 
 • for encapsulation purpose, Ruby doesnt allow direct access to instance variables. For access, use 'accessor methods' (attribute writer and attribute reader (similar to set/get)). 
 • Declare a att. write by def my_att=(value) ...
 • Simplifying accessor methods: just create them by:
-∘ attr_writer :my_var #same as def my_var=(value) @my_var = value end
-∘ attr_reader :my_var #same as def my_var @my_var end
-∘ attr_accessor :my_var #defines both att. writer and att. reader *add more vars by "," #attr_accessor :name, :age
+	∘ attr_writer :my_var #same as def my_var=(value) @my_var = value end
+	∘ attr_reader :my_var #same as def my_var @my_var end
+	∘ attr_accessor :my_var #defines both att. writer and att. reader *add more vars by "," #attr_accessor :name, :age
 • Inheritance: class MySubclass < MySuperclass ... end 
-∘ instance variables belong to the obj, not the class. When a class inherit from a superclass, only the instance methods are inherited. If you try " puts obj.instance_variables ", nothing will show up. The obj won't get any instance varaibles until we call some instance methods on it, at which point the method will create the varaibles on the obj.
+	∘ instance variables belong to the obj, not the class. When a class inherit from a superclass, only the instance methods are inherited. If you try " puts obj.instance_variables ", nothing will show up. The obj won't get any instance varaibles until we call some instance methods on it, at which point the method will create the varaibles on the obj.
 
-# irb
-  loading file:
-> irb -I
->require "./my_file"
+-------------- // --------------
+
+#class methods vs instance methods: C.M works like an "static method" in Java. You can call a C.M. without creating an instance, while I.M. requires an instance (obj = MyClass.new)
+
+#blocks: are just chunck of code you can pass as parameter to a method: 
+
+def my_method(&my_block)    do sth...    my_block.call #execute your block    do sth..  end 
+ '&' define the obj as an block 
+
+actual block:
+my_method do 
+   do sth...
+end 
+*a block cant be executed by itself
 
