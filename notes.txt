@@ -70,3 +70,12 @@ my_method do
 end 
 *a block cant be executed by itself
 
+-----------
+#hashes: hash is a collection (kind like an array) in which each value is accessed via a key
+ {"KEY" => "VALUE", "KEY" => "VALUE", etc}	e.g: {"name" => "ismael", "name" => "thiago"}
+ *use square brackets to access them:
+	puts myHash[name] 
+*arrays use interger for index, whereas hashes could use numbers, string and symbols:
+	{1 => "one", "two" => "two", :three => "three"}
+
+
