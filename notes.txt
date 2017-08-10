@@ -1,5 +1,25 @@
 Ruby
 
+Documentation:
+
+http://docs.ruby-lang.org
+http://ruby-doc.org
+http://www.rubydoc.info
+
+*instance methods are refered with # to differ from class methods. e.g.: Array#length
+** [] in methods params indicates optional args : #index(substring[, offset])
+** blocks indicated with {||...} : #each {|item|...}
+
+> "Core Ruby" classes and modules are loaded into memory everytime a program runs. 
+Specialized ones must be explicitly loaded via 'require' method. 
+Note: not everything in the 'Ruby standard library' is loaded.
+
+Documenting: 
+Use 'rdoc' for documenting your code: 
+	# rdoc <file.rb>
+  *it'll generate a HTML file documenting the code
+
+------------------------
 Install Ruby and IRB (interpreter):
 $ sudo yum install ruby -t '2.4.1'
 $ sudo yum install irb rdoc
@@ -55,6 +75,40 @@ Ruby is a dynamic, object-oriented, interpreted scripting programming language. 
 • Inheritance: class MySubclass < MySuperclass ... end 
 	∘ instance variables belong to the obj, not the class. When a class inherit from a superclass, only the instance methods are inherited. If you try " puts obj.instance_variables ", nothing will show up. The obj won't get any instance varaibles until we call some instance methods on it, at which point the method will create the varaibles on the obj.
 
+• variables, arrays, hashes, etc never store a object. they hold references to the "heap memory"
+• Module is a group of methods:
+	module MyModule	...methods... end *looks like a 'class' but you cant create instances out of it
+	∘ you can "mix in" a module into a class; modules designed to be mixed into a class are called mixins:
+	class MyClass
+		include MyModule ...
+	∘ for convention, you should name a module using adjectives to represent the behaviour the group of methods (the module) have
+	e.g.: module AcceptsComments ... module Playable ...module Secured...
+	∘ the Ruby looks for an method in your class, then in the medules mixed in, finaly in the superclass ***check it with ".ancestors" class method
+	   *for this reason, avoid using initialize in modules, bc if you use one in your class, it will be overridden and you attributes in the module will be nil.
+		
+everything is obj, hence everytihng has mehtods:
+	e.g.: 4 > 3 ...is actualy 4.>(3) ...> is the name of the method and 3 is being passed
+
+• Constants are defined by declaring a variable with a capital letter: Myconstant
+  *by convention, constants should be named with ALL_CAPS.
+
+CUSTOM EACH method:
+#the method each is available for string and other objects
+#to use each in a object from a custom class you will need to create a custom method
+class WordSplitter
+	attr_accessor :string #will hold the string obj which will call the each from Enumerable 
+	def each
+		string.split(" ").each do |word|
+		yeild word
+	end
+end
+#calling: 
+splitter = WordSplitter.new
+splitter.string = "one two three"
+
+splitter.each do |word| 
+ puts word
+end
 -------------- // --------------
 
 #class methods vs instance methods: C.M works like an "static method" in Java. You can call a C.M. without creating an instance, while I.M. requires an instance (obj = MyClass.new)
@@ -77,5 +131,11 @@ end
 	puts myHash[name] 
 *arrays use interger for index, whereas hashes could use numbers, string and symbols:
 	{1 => "one", "two" => "two", :three => "three"}
+	*but, keys are not cauculated as indexes 
+
+Rule of thumb for Hash defaults:
+*if your default is a numeric, you can use a hash default object.
+*if your default is anything else, you should use a hash default block.  
+---
 
 
