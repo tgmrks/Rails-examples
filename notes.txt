@@ -18,7 +18,7 @@ Documenting:
 Use 'rdoc' for documenting your code: 
 	# rdoc <file.rb>
   *it'll generate a HTML file documenting the code
-
+ * to insert description for class, methods, modules, etc, place a comment right before the class, method, etc...
 ------------------------
 Install Ruby and IRB (interpreter):
 $ sudo yum install ruby -t '2.4.1'
@@ -136,6 +136,10 @@ end
 Rule of thumb for Hash defaults:
 *if your default is a numeric, you can use a hash default object.
 *if your default is anything else, you should use a hash default block.  
----
-
+---------------
+Debuging:
+Raise: throws an error message
+ *use 'raise' instead of 'return'
+ *return may prompt a message informing the error, but the code keep running. Raise will literally throw an error that stops the executing.
+  *the avoid stoping the execution you can use 'rescue' to apply a solution, so the execution keep going on 
 
