@@ -142,4 +142,13 @@ Raise: throws an error message
  *use 'raise' instead of 'return'
  *return may prompt a message informing the error, but the code keep running. Raise will literally throw an error that stops the executing.
   *the avoid stoping the execution you can use 'rescue' to apply a solution, so the execution keep going on 
+ *you can create a custom exception class, but it must be a subclass of Ruby's Exception Class
 
+
+Minitest
+# gem install minitest
+
+*for convention create a folder '/lib' for your code and a folder '/test' for you test file
+ *when runing a test use 'ruby -I lib <dir_of_the_test>' (-I lib flag) to load required libs within the test.rb code   
+  *ensure a method that tests your code is named "test_*"
+ *red, green, refactor:
