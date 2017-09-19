@@ -1,0 +1,37 @@
+## commands
+
+# new rails project
+$ rails new <project>
+
+# run server
+$ rails server
+
+# generate models
+$ rails generate model <n attributes:type>
+	or: rails g m/c
+ex.: rails g model Post title:string body:text
+
+# migrate DB (will create a table defined in model, which will create the file 'schema.rb')
+$rake db:migrate
+	*do not edit 'schema' directly 
+
+# generate controller (and view, being opction)
+$ rails generate controller Posts <action>
+ex.: rails generate controller Posts index
+				     *adds index as an action to the 				      controller and creates the view
+# list routes
+$ rake routes
+
+
+## others
+
+# insecure error: 
+$ chmod go-w <path>
+
+ruby mvc
+we create MODEL to handle our data, and CONTROL to manipulate de data, and VIEW to access the data.
+
+REST (representation state transfer) verbs (crud actions):
+- GET: read, - POST: create, - PATCH: update, - DELETE: destroy
+*rails model creates the DB stuff
+*rails controller creates C and V stuff (controllers.rb, routes in config, views)
